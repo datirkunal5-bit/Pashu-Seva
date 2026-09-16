@@ -19,7 +19,15 @@ app.use(cors());
 app.use(express.json());
 
 // Seed default data if needed
-seedDatabase(defaultDb);
+seedDatabase(defaultDb).catch((err) => {
+  if (err.message && (err.message.includes('401') || err.message.includes('UNAUTHORIZED') || (err.cause && err.cause.status === 401))) {
+    console.error('\n❌ DATABASE AUTHENTICATION ERROR (HTTP 401 Unauthorized):');
+    console.error('The TURSO_AUTH_TOKEN in your Render environment variables is invalid, missing, or expired.');
+    console.error('Please generate a fresh token on Turso and update TURSO_AUTH_TOKEN in Render.\n');
+  } else {
+    console.error('❌ Database initialization error:', err);
+  }
+});
 
 // API Health Check
 app.get('/api/health', (req, res) => {

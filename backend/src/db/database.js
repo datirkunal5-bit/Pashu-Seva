@@ -17,9 +17,21 @@ export function createDatabase(customConfig = {}) {
   let url = customConfig.url || process.env.TURSO_DATABASE_URL;
   let authToken = customConfig.authToken || process.env.TURSO_AUTH_TOKEN;
 
+  if (url) {
+    url = url.trim().replace(/^["']|["']$/g, '');
+  }
+  if (authToken) {
+    authToken = authToken.trim().replace(/^["']|["']$/g, '');
+  }
+
   if (!url) {
     const filePath = customConfig.filePath || defaultLocalDbPath;
     url = `file:${filePath}`;
+  }
+
+  const isTurso = url.startsWith('libsql:') || url.startsWith('https:');
+  if (isTurso && !authToken) {
+    console.warn('⚠️ WARNING: TURSO_DATABASE_URL is set, but TURSO_AUTH_TOKEN is missing or empty! This will cause HTTP 401 Unauthorized.');
   }
 
   const client = createClient({
@@ -27,7 +39,6 @@ export function createDatabase(customConfig = {}) {
     authToken
   });
 
-  const isTurso = url.startsWith('libsql:') || url.startsWith('https:');
 
   const db = {
     client,
