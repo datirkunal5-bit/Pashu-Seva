@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>पशू खाद्य खतावणी | Pashu Khadya Ledger App</title>
+  <meta name="description" content="सहकारी दूध व्यावसायिक संस्था मर्यादित - पशू खाद्य खतावणी मोबाइल ॲप" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Mobile Device Viewport Shell -->
+  <div class="device-viewport">
+    <!-- Main Application Header -->
+    <header class="app-header">
+      <div class="header-top">
+        <div class="brand-section">
+          <div class="brand-logo">🥛</div>
+          <div class="brand-info">
+            <h1 class="brand-title">पशू खाद्य खतावणी</h1>
+            <span class="brand-sub" id="brandSub">सहकारी दूध व्यावसायिक संस्था मर्यादित</span>
+          </div>
+        </div>
+
+        <div class="header-controls">
+          <!-- Language Toggle (मराठी / English) -->
+          <button id="langToggleBtn" class="lang-btn" title="भाषा बदला / Change Language">
+            English
+          </button>
+
+          <!-- Active Role Switcher Badge -->
+          <button id="portalBadge" class="role-badge-btn" title="भूमिका बदला / Switch Role">
+            क्लार्क (Admin)
+          </button>
+
+          <!-- Logout Button -->
+          <button id="logoutBtn" class="logout-icon-btn" title="Logout" style="display: none;">
+            🚪
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dynamic Content Area -->
+    <main class="app-content" id="appContent">
+      <!-- Injected dynamically by app.js -->
+    </main>
+
+    <!-- Floating Action Button for Fast 2-Tap Entry -->
+    <button id="fabAddBtn" class="fab-add" style="display: none;">
+      <span>➕</span>
+      <span id="fabText">नवीन नोंद</span>
+    </button>
+  </div>
+
+  <!-- Modal 1: Quick Add / Edit Transaction Bottom Sheet -->
+  <div id="addTxModal" class="modal-backdrop"></div>
+
+  <!-- Modal 2: Add New Member Bottom Sheet -->
+  <div id="addMemberModal" class="modal-backdrop"></div>
+
+  <!-- Modal 3: Confirmation Dialog (Recalculation Safety) -->
+  <div id="confirmModal" class="modal-backdrop"></div>
+
+  <!-- App Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

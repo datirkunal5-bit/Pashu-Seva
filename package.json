@@ -1,0 +1,23 @@
+{
+  "name": "pashu-khadya-ledger",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Dairy Cooperative Society Cattle Feed Ledger App (पशू खाद्य खतावणी)",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node backend/src/server.js",
+    "test": "node --test tests/ledger_balance.test.js",
+    "seed": "node backend/src/db/seed.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}
